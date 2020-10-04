@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>About</title>
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="container">
+        <center>
+            <img src="assets/pages/logo.png" width="50%">
+            <h1>CryptoChange</h1>
+            <p class="greytext">version 1.0</p>
+        
+        
+        <p> share the project </p>
+            <a class="about-share" href="" target="_blank"><img src="assets/social/fb.png"></a>
+            <a class="about-share" href="" target="_blank"><img src="assets/social/twitter.png"></a>
+        
+        <p>
+            <a href="""></a> CryptoChange.org </a>
+        </p>
+        </center>
+    </div>
+    <script>
+    const { remote } = require('electron');
+    const $ = require('./jquery.min.js');
+    const shell = require('electron').shell;
+
+    document.querySelector('#version').textContent = remote.getCurrentWindow().version;
+    // document.querySelector('#uuid').textContent = remote.getCurrentWindow().uuid;
+
+    // assuming $ is jQuery
+    $(document).on('click', 'a[href^="https"]', function(event) {
+        event.preventDefault();
+        shell.openExternal(this.href);
+    });
+
+    </script>
+</body>
+
+</html>

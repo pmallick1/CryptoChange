@@ -1,0 +1,70 @@
+{
+  "name": "JusticeCoin",
+  "version": "1.0.0",
+  "description": "converts computational cycles in fundraising",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "icons": "nicns --in build/logo.png --out build/icon.icns;convert -resize 256x256 build/logo.png build/icon.ico",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "buildall": "electron-builder -mwl",
+    "publish": "electron-builder -mwl -p always",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "author": "JusticeCoin Iniative",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^1.8.8",
+    "electron-builder": "^19.22.1",
+    "node-icns": "0.0.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/thenewinquiry/bailbloc.git"
+  },
+  "dependencies": {
+    "battery-level": "^2.0.1",
+    "electron-log": "^2.2.7",
+    "electron-positioner": "^3.0.0",
+    "electron-settings": "^3.1.1",
+    "electron-updater": "^2.16.1",
+    "fix-path": "^3.0.0",
+    "is-charging": "^1.2.0",
+    "net": "^1.0.2",
+    "strip-ansi": "^4.0.0",
+    "uuid": "^3.1.0"
+  },
+  "build": {
+    "appId": "com.thenewinquiry.bailbloc",
+    "productName": "Justice Coin",
+    "asar": false,
+    "mac": {
+      "category": "public.app-category.utilities",
+      "extendInfo": {
+        "LSUIElement": 1
+      }
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 200,
+          "y": 288
+        },
+        {
+          "x": 400,
+          "y": 283,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "Justice Coin Initiative",
+        "repo": "Justice Coin"
+      }
+    ]
+  }
+}

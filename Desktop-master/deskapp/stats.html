@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Stats</title>
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="stats.css">
+    <style>
+    html,
+    body {
+        margin: 0px;
+        padding: 0px;
+        width: 100%;
+        height: 100%;
+    }
+    </style>
+</head>
+
+<body>
+
+    <!-- updated -->
+    <!-- <div style="position:absolute;width:100%;bottom:10px;text-align:center;color:#aaa;font-size:10px">note that mining rewards are distributed approximately every 48 hours, so please check back soon</div> -->
+
+    <div id="yaxis-label-top">
+    </div>
+    <div id="yaxis-label-bottom">
+    </div>
+    <div id="xaxis-label-actual">
+        <img class="graphicon" src="assets/cute-graph.png">
+        <div>XMR generated</div>
+    </div>
+    <div id="label-payouts">
+        <img class="graphicon" src="assets/cute-graph-payout.png">
+        <div></div>
+    </div>
+    
+    <div id="xaxis-label-friends">
+        <img class="graphicon" src="assets/cute-graph-green.png">
+        <div>USD raised</div>
+        <a href="https://www.facebook.com/JusticeCoin2020/" target="_blank"><img src="assets/social/fb.png"></a>
+        <a href="https://twitter.com/Justice_Coin" target="_blank"><img src="assets/social/twitter.png"></a> 
+  
+    </div>
+    <div id="label-donations">
+        <img class="graphicon" src="assets/cute-graph-donation.png">
+        <div>DONATION RECEIVED</div>
+    </div>
+
+    <div id="topbox">
+        <div id="general-stats">
+            <span>currently</span>
+            <div id="stats-text">
+                <p><span id="numWorkers">0</span> people using CryptoChange</p>
+                <p><span id="totalUSD">$0</span> raised</p>
+            </div>
+        </div>
+        <div id="stats-modes">
+            <div id="stats-text">
+                <p><span id="scrub-date" style="color:#000"></span></p>
+
+            </div>
+        </div>
+        <div id="invite-friends">
+            invite friends
+            <a href="https://www.facebook.com/JusticeCoin2020/" target="_blank"><img src="assets/social/fb.png"></a>
+            <a href="https://twitter.com/Justice_Coin" target="_blank"><img src="assets/social/twitter.png"></a>
+        </div>
+    </div>
+    <div id="stats-date">
+    </div>
+    <div id="scrub-line">
+    </div>
+    <div id="scrub-actual">
+    </div>
+    <div id="scrub-friends">
+    </div>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+    <script src="p5.min.js"></script>
+    <script src="stats.js"></script>
+    <script>
+    const shell = require('electron').shell;
+
+    // make links load in external browser
+    $(document).on('click', 'a[href^="http"]', function(event) {
+        event.preventDefault();
+        shell.openExternal(this.href);
+    });
+    
+    </script>
+</body>
+
+</html>

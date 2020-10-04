@@ -1,0 +1,89 @@
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Settings</title>
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="container">
+        <h1>SETTINGS</h1>
+        <form>
+          <p>System Impact</p>
+
+          <div id="settings">
+
+            <div class="form-element">
+                <label class="control control-checkbox">
+                    <input class="control radio" type="radio" name="mode" v-model="maxUsage" @change="update" value="10">Low
+                    <div class="control_indicator"></div>
+                </label>
+            </div>
+
+            <div class="form-element">
+                <label class="control control-checkbox">
+                    <input class="control radio" type="radio" name="mode" v-model="maxUsage" @change="update" value="20">Medium
+                    <div class="control_indicator"></div>
+                </label>
+            </div>
+
+            <div class="form-element">
+                <label class="control control-checkbox">
+                    <input class="control radio" type="radio" name="mode" v-model="maxUsage" @change="update" value="50">High
+                    <div class="control_indicator"></div>
+                </label>
+            </div>
+          </div>
+    
+    <!-- <label for="max-usage">Max CPU usage: <span>{{maxUsage}}%</span></label>
+        <input v-model="maxUsage" @change="update"  id="max-usage" type="range" min="10" max="100" step="1"> -->
+    
+    <div class="form-element" style="margin-top: 14px;">
+        <label for="autostart" class="control control-checkbox">
+            Start CryptoChange on login
+            <input v-model="autostart" @change="update" id="autostart" type="checkbox">
+            <div class="control_indicator"></div>
+        </label>
+    </div>
+    <div class="form-element" style="margin-top: 19px;">
+        <label for="should-pause" class="control control-checkbox">
+            Pause when low on battery
+            <input v-model="pauseOnLowPower" @change="update" id="should-pause" type="checkbox">
+            <div class="control_indicator"></div>
+        </label>
+    </div>
+    <button @click="close" style="margin-top: 16px;">Done</button>
+    </form>
+    </div>
+    <script src="vue.min.js"></script>
+    <script>
+    const { ipcRenderer, remote } = require('electron');
+
+    let currentWindow = remote.getCurrentWindow();
+
+    var app = new Vue({
+        el: '#container',
+        data: {
+            maxUsage: currentWindow.settings.maxUsage,
+            pauseOnLowPower: currentWindow.settings.pauseOnLowPower,
+            autostart: currentWindow.settings.autostart
+        },
+        methods: {
+            close() {
+                window.close();
+            },
+            update() {
+                ipcRenderer.send('changeSettings', {
+                    maxUsage: this.maxUsage,
+                    pauseOnLowPower: this.pauseOnLowPower,
+                    autostart: this.autostart
+                });
+            }
+        }
+    });
+    </script>
+</body>
+
+</html>
